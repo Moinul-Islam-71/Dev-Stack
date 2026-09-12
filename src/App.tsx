@@ -1,14 +1,24 @@
-import './App.css'
-import Navbar from './components/Navbar'
+import "./App.css";
+import Banner from "./components/Banner";
+import Navbar from "./components/Navbar";
+import TechnologiesContainer from "./components/TechnologiesContainer";
 
 function App() {
-  
-
   return (
     <>
-      <Navbar />
+      <header>
+        <Navbar />
+      </header>
+
+      <main>
+        <Banner />
+
+        <TechnologiesContainer />
+      
+        
+      </main>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
