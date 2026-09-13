@@ -1,8 +1,8 @@
 import { Suspense, useState } from "react";
 import CartSection from "./CartSection";
-import Footer from "./Footer";
 import Technologies from "./Technologies";
 import type { TechnologyType } from "../type";
+import { toast } from "react-toastify";
 
 const loadTechnologiesPromise = async () => {
     const res = await fetch("/data/technologies.json");
@@ -45,18 +45,22 @@ export default function TechnologiesContainer() {
     };
 
 
-    const handleRemove = (id: string): void => {
+    const handleRemove = (techID: string): void => {
+
+        const id = techID.toUpperCase();
 
         const newAddedTechnology = addedTechnology.filter(
-            (technology) => technology.id !== id
+            (technology) => technology.id !== techID
         );
 
         setAddedTechnology(newAddedTechnology);
+        toast.error(`${id} Removed!`)
     };
-
-
+    
+    
     const handleRemoveAll = (): void => {
         setAddedTechnology([]);
+        toast.error(`All Stacks Removed!`)
     };
 
 
@@ -75,7 +79,7 @@ export default function TechnologiesContainer() {
             </p>
 
 
-            <div className="flex gap-6">
+            <div className="flex flex-col md:flex-row items-center md:items-start mb-10 gap-6">
 
                 <Suspense
                     fallback={
@@ -100,8 +104,6 @@ export default function TechnologiesContainer() {
 
             </div>
 
-
-            <Footer />
 
         </div>
     );

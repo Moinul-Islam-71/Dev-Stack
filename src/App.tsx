@@ -1,5 +1,9 @@
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import "./App.css";
 import Banner from "./components/Banner";
+import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import TechnologiesContainer from "./components/TechnologiesContainer";
 
@@ -15,8 +19,10 @@ function App() {
 
         <TechnologiesContainer />
       
-        
+        <ToastContainer />
       </main>
+
+      <Footer />
     </>
   );
 }

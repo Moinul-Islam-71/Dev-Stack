@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import type { TechnologyType } from "../type"
 
 export interface TechnologyCardProps {
@@ -27,8 +28,23 @@ export default function TechnologyCard({
     (item) => item.id === technology.id
   );
 
+  const notify = (isAdded: boolean, techID: string) => {
+    const id = techID.toUpperCase();
 
-  const handleAdded = () => {
+    return (
+      isAdded ? 
+      toast.error(`${id} Already Added!`) : 
+      toast.success(`${id} Added successfully`)
+    )
+  }
+
+  const handleAdded = (id: string) => {
+    if(isAdded) {
+      notify(isAdded, id)
+      return;
+    }
+    
+    notify(isAdded, id);
     handleAddedTechnologies(technology);
   }
 
@@ -38,7 +54,7 @@ export default function TechnologyCard({
 
       <div>
 
-        {/* Top Section */}
+        
         <div className="flex items-center justify-between gap-3 mb-4 sm:mb-5">
 
           <div className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center shrink-0">
@@ -61,7 +77,7 @@ export default function TechnologyCard({
         </div>
 
 
-        {/* Title & Description */}
+        
         <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2">
           {name}
         </h3>
@@ -75,7 +91,7 @@ export default function TechnologyCard({
 
       <div>
 
-        {/* Footer Info */}
+        
         <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-600 mb-4 sm:mb-5 pt-4 border-t border-slate-50">
 
           <span className="bg-slate-100 text-slate-700 px-2.5 sm:px-3 py-1.5 rounded-md font-medium">
@@ -101,9 +117,9 @@ export default function TechnologyCard({
         </div>
 
 
-        {/* Add to Stack */}
+        
         <button
-          onClick={handleAdded}
+          onClick={() => handleAdded(technology.id)}
           className="w-full bg-[#0B0F19] hover:bg-slate-800 text-white font-medium text-xs sm:text-sm py-2.5 sm:py-3 rounded-lg sm:rounded-xl transition-colors duration-200 cursor-pointer"
         >
 

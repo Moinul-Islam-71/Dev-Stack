@@ -15,7 +15,7 @@ export default function CartSection({
     return (
         <div className="w-full h-fit max-w-sm rounded-2xl border border-slate-200 bg-white p-5 shadow-md">
 
-            {/* Header */}
+            
             <div>
                 <h2 className="text-xl font-semibold text-slate-950">
                     Your Stack
@@ -31,7 +31,7 @@ export default function CartSection({
             </div>
 
 
-            {/* Selected Technologies */}
+            
             <div className="mt-4 space-y-2">
 
                 {selectedStack.length > 0 ? (
@@ -87,7 +87,7 @@ export default function CartSection({
             </div>
 
 
-            {/* Remove All Button */}
+            
             {selectedStack.length > 0 && (
 
                 <button
