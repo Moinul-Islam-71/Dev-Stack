@@ -23,7 +23,7 @@ export default function CartSection({
 
                 <p className="mt-1 text-sm text-slate-400">
                     {selectedStack.length}{" "}
-                    {selectedStack.length === 1
+                    {selectedStack.length === 1 || selectedStack.length === 0
                         ? "Technology"
                         : "Technologies"}{" "}
                     Selected
