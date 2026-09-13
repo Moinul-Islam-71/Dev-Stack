@@ -50,7 +50,10 @@ export default function TechnologyCard({
 
 
   return (
-    <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-5 lg:p-6 border border-slate-100 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between h-full">
+    <div className={
+      `${isAdded ? "border-3 border-rose-200" : "border-slate-100"}
+      bg-white md:rounded-2xl rounded-3xl p-5 md:p-4 lg:p-6 border shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between h-full`
+      }>
 
       <div>
 
@@ -120,12 +123,16 @@ export default function TechnologyCard({
         
         <button
           onClick={() => handleAdded(technology.id)}
-          className="w-full bg-[#0B0F19] hover:bg-slate-800 text-white font-medium text-xs sm:text-sm py-2.5 sm:py-3 rounded-lg sm:rounded-xl transition-colors duration-200 cursor-pointer"
+          className={
+            `${!isAdded ? "bg-[#0B0F19] hover:bg-slate-800 text-white" : "bg-rose-200 hover:bg-rose-300 text-rose-400 hover:text-rose-500"}
+            w-full  font-medium md:text-xs text-sm md:py-2.5 py-3 rounded-md transition-colors duration-200 cursor-pointer`}
         >
 
           {
             isAdded
-              ? "✔ Added To Stack"
+              ? <>
+                <i className="fa-solid fa-check"></i> Added To Stack
+              </>
               : "Add to Stack"
           }
 
