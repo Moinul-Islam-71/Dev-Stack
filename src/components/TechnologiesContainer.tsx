@@ -5,7 +5,9 @@ import type { TechnologyType } from "../type";
 import { toast } from "react-toastify";
 
 const loadTechnologiesPromise = async () => {
-    const res = await fetch("/data/technologies.json");
+    const res = await fetch(
+        `${import.meta.env.BASE_URL}data/technologies.json`
+    );
     const data = await res.json();
     return data;
 };
